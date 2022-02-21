@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_config/flutter_config.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -9,6 +10,9 @@ import 'package:provider/provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  // Setting localization
+  await EasyLocalization.ensureInitialized();
+
   // Setting ENV variables from .env file
   await FlutterConfig.loadEnvVariables();
 
@@ -16,7 +20,12 @@ void main() async {
   setUpLocator();
 
   // Setting app
-  runApp(const MyApp());
+  runApp(EasyLocalization(
+    supportedLocales: const [Locale('en')],
+    path: 'assets/translations',
+    fallbackLocale: const Locale('en'),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -35,9 +44,12 @@ class MyApp extends StatelessWidget {
       // Creating application widget
       child: MaterialApp(
         title: 'Iuerel',
-        localizationsDelegates: const [
+        localizationsDelegates: [
           FormBuilderLocalizations.delegate,
+          ...context.localizationDelegates,
         ],
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
         theme: ThemeData(
           primarySwatch: Colors.amber,
         ),

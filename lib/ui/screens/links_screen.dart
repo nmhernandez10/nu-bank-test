@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
@@ -64,9 +65,9 @@ class _LinksScreenState extends State<LinksScreen> {
             minWidth: MediaQuery.of(context).size.width,
             elevation: 0.0,
             color: Theme.of(context).colorScheme.secondary,
-            child: const Text(
-              "Shorten",
-              style: TextStyle(color: Colors.white),
+            child: Text(
+              'shorten'.tr(),
+              style: const TextStyle(color: Colors.white),
             ),
             onPressed: _loading ? null : _shorten,
           ),
@@ -79,11 +80,11 @@ class _LinksScreenState extends State<LinksScreen> {
     // Retrieve links from state managemente providers
     List<Link> links = context.watch<LinksProvider>().links.reversed.toList();
     if (links.isEmpty) {
-      return const Center(
+      return Center(
         child: Text(
-          'You have not shorten any URL',
+          'empty'.tr(),
           textAlign: TextAlign.left,
-          style: TextStyle(
+          style: const TextStyle(
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -92,15 +93,15 @@ class _LinksScreenState extends State<LinksScreen> {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(
+          Padding(
+            padding: const EdgeInsets.symmetric(
               horizontal: Value.horizontalSpacing,
               vertical: Value.defaultSpacing,
             ),
             child: Text(
-              'Recent shortened urls:',
+              'recent'.tr(),
               textAlign: TextAlign.left,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.w600,
               ),
             ),
