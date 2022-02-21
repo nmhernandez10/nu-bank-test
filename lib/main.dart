@@ -16,6 +16,11 @@ void main() async {
   // Setting ENV variables from .env file
   await FlutterConfig.loadEnvVariables();
 
+  // The next code line allows Android usage correctly with no any extras changes
+  // ignore: invalid_use_of_visible_for_testing_member
+  FlutterConfig.loadValueForTesting(
+      {'SHORTENER_URL': 'https://url-shortener-nu.herokuapp.com'});
+
   // Setting singleton services locator
   setUpLocator();
 
