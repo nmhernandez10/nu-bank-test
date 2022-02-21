@@ -1,31 +1,26 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:nu_bank_test/core/models/link.dart';
-import 'package:nu_bank_test/core/providers/links_provider.dart';
-import 'package:nu_bank_test/locator.dart';
+import 'package:nu_bank_test/core/services/links_service.dart';
 
 void main() {
-  setUpAll(() {
-    // Links provider tests need services locator
-    setUpLocator();
-  });
   group('Links Service', () {
-    test('provider is loading correctly', () {
-      LinksProvider provider = LinksProvider();
+    test('link service is getting correctly', () {
+      LinksService service = LinksService();
       expect(
-        provider.loaded,
+        service.links.isEmpty,
         true,
       );
     });
 
-    test('provider is adding a link correctly', () {
-      LinksProvider provider = LinksProvider();
-      provider.addLink(Link(
+    test('link service is adding correctly a link', () {
+      LinksService service = LinksService();
+      service.addLink(Link(
         createdAt: DateTime.now(),
         originalUrl: '',
         shortenUrl: '',
       ));
       expect(
-        provider.links.length,
+        service.links.length,
         1,
       );
     });
