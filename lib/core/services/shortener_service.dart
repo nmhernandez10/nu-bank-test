@@ -5,18 +5,15 @@ import 'package:nu_bank_test/core/services/fetch_service.dart';
 
 import '../models/shorten_url_req.dart';
 
+// Service to request shorten link endpoint
 class ShortenerService {
   Future<Link> shortenLink({required String url}) async {
     ShortenUrlReq shortenUrlReq = ShortenUrlReq(url: url);
-    print('req body');
-    print(shortenUrlReq.toJson());
     var response = await FetchService.post(
       url: Url.shortenerUrl,
       path: Path.shortenerAliasPath,
       body: shortenUrlReq.toJson(),
     );
-    print('response shorten');
-    print(response);
     ShortenUrlRes shortenUrlRes = ShortenUrlRes.fromJson(response);
     return Link(
       createdAt: DateTime.now(),

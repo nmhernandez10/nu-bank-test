@@ -34,7 +34,7 @@ class _LinksScreenState extends State<LinksScreen> {
 
   Widget _buildForm() {
     return Padding(
-      padding: EdgeInsets.symmetric(
+      padding: const EdgeInsets.symmetric(
         horizontal: Value.horizontalSpacing,
         vertical: Value.verticalSpacing,
       ),
@@ -76,6 +76,7 @@ class _LinksScreenState extends State<LinksScreen> {
   }
 
   Widget _buildListView() {
+    // Retrieve links from state managemente providers
     List<Link> links = context.watch<LinksProvider>().links.reversed.toList();
     if (links.isEmpty) {
       return const Center(
@@ -91,12 +92,12 @@ class _LinksScreenState extends State<LinksScreen> {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Padding(
+          const Padding(
             padding: EdgeInsets.symmetric(
               horizontal: Value.horizontalSpacing,
               vertical: Value.defaultSpacing,
             ),
-            child: const Text(
+            child: Text(
               'Recent shortened urls:',
               textAlign: TextAlign.left,
               style: TextStyle(
@@ -106,7 +107,7 @@ class _LinksScreenState extends State<LinksScreen> {
           ),
           Expanded(
             child: ListView.separated(
-              separatorBuilder: (context, index) => Divider(
+              separatorBuilder: (context, index) => const Divider(
                 indent: Value.horizontalSpacing,
                 endIndent: Value.horizontalSpacing,
                 color: Colors.grey,

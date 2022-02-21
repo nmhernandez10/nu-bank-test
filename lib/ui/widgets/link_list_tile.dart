@@ -16,7 +16,7 @@ class LinkListTile extends StatelessWidget {
           SelectableText(
             link.shortenUrl,
           ),
-          SizedBox(
+          const SizedBox(
             height: Value.defaultSpacing,
           ),
           Text(
@@ -26,7 +26,7 @@ class LinkListTile extends StatelessWidget {
               fontSize: 14.0,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: Value.defaultSpacing,
           ),
           Text(formatDate(link.createdAt)),

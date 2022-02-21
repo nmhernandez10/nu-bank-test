@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+// Global service for http requests
 class FetchService {
   static Map<String, String> defaultHeaders = {
     'Content-Type': 'application/json'

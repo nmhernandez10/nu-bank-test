@@ -1,3 +1,4 @@
+// DTO class to request shorten url service
 class ShortenUrlReq {
   String url;
 

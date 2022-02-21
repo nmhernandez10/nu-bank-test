@@ -5,6 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'package:nu_bank_test/core/models/link.dart';
 import 'package:nu_bank_test/core/services/links_service.dart';
 
+// Provider for links state management
 class LinksProvider extends ChangeNotifier {
   // Singleton instance to use links services
   final LinksService _linksService = GetIt.I<LinksService>();

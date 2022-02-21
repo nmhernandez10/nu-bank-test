@@ -1,3 +1,4 @@
+// DTO class to parse response from shorten url service
 class ShortenUrlRes {
   String alias;
   String originalUrl;
